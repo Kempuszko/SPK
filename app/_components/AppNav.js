@@ -5,7 +5,6 @@ import {
   HiHome,
   HiSquare2Stack,
   HiXMark,
-  HiBars3,
 } from "react-icons/hi2";
 import NavLink from "./NavLink";
 
@@ -20,7 +19,7 @@ const navLinks = [
   { name: "Pliki", href: "/application/files", icon: <HiArchiveBox /> },
 ];
 const mobileNav =
-  "2xs:fixed 2xs:top-0 2xs:left-0 2xs:w-full 2xs:flex 2xs:h-full 2xs:justify-center 2xs:items-center 2xs:bg-[rgb(229,231,235,0.3)] 2xs:dark:bg-[rgba(0,0,0,0.3)] 2xs:backdrop-blur-sm z-20 xl:static xl:justify-start xl:items-start xl:bg-gray-100 xl:dark:bg-gray-900 invisible xl:visible xl:w-fit ";
+  "2xs:fixed 2xs:top-0 2xs:left-0 2xs:w-full 2xs:flex 2xs:h-full 2xs:justify-center 2xs:items-center 2xs:bg-[rgb(229,231,235,0.3)] 2xs:dark:bg-[rgba(0,0,0,0.3)] 2xs:backdrop-blur-sm z-20 xl:static xl:justify-start xl:items-start xl:bg-gray-100 xl:dark:bg-gray-900 invisible xl:visible xl:w-fit transition-all";
 
 function AppNav() {
   function handleNav() {
@@ -30,7 +29,7 @@ function AppNav() {
   return (
     <>
       <ul
-        className={`${mobileNav} border-r border-gray-200 py-4 px-6 dark:border-gray-800 mobileNav transition-all duration-200`}
+        className={`${mobileNav} border-r border-gray-200 py-4 px-6 dark:border-gray-800 mobileNav`}
       >
         <div className="flex flex-col 2xs:gap-8">
           <button

@@ -19,7 +19,7 @@ function Slider() {
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center 2xs:px-4 pb-8">
-      <div className="bg-amber-200 2xs:p-2 2xl:py-4 2xl:px-8 rounded-4xl dark:bg-blue-950 transition-colors duration-150 relative">
+      <div className="bg-amber-200 2xs:p-2 2xl:py-4 2xl:px-8 rounded-4xl dark:bg-blue-950 transition-colors duration-200 relative">
         <Image
           src={darkImages.at(active)}
           alt="test"

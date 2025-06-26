@@ -1,6 +1,6 @@
 function Logo() {
   return (
-    <div className="z-10">
+    <div className="z-10 duration-200">
       <span className="font-semibold underline 2xs:text-xl xs:text-2xl sm:text-3xl xl:text-4xl">
         SPK
       </span>
