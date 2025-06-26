@@ -26,8 +26,8 @@ function CalendarComponent({ eventDays, session }) {
           endMonth={add(new Date(), { months: 5 })}
           numberOfMonths={1}
           classNames={{
-            today: "ring-4 dark:ring-blue-600 ring-amber-500",
-            selected: `bg-amber-400 dark:bg-blue-800 text-xl font-semibold`,
+            today: "[&>*]:ring-4 [&>*]:dark:ring-blue-600 [&>*]:ring-amber-500",
+            selected: ` [&>*]:bg-amber-400  [&>*]:dark:bg-blue-800  [&>*]:text-xl  [&>*]: font-semibold`,
           }}
           components={{
             DayButton: (props) => {
