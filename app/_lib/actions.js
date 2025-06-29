@@ -158,9 +158,18 @@ export async function uploadBucketItem(formData) {
 export async function deleteBucketItem(fileName) {
   if (!fileName) return;
 
-  const { error } = await supabase.storage.from("files").remove([fileName]);
+  const { uploadError } = await supabase.storage
+    .from("files")
+    .remove([fileName]);
 
-  if (error) console.error(error);
+  if (uploadError) console.error(uploadError);
+
+  const { insertDataError } = await supabase
+    .from("files")
+    .delete()
+    .eq("fileName", fileName);
+
+  if (insertDataError) console.error(insertDataError);
 
   revalidatePath("/application/files");
 }
