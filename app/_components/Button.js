@@ -1,17 +1,25 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import toast from "react-hot-toast";
 
 function Button({ children, type, onClick = null, fileName = "" }) {
   const commonStyles =
     "duration-200 focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none bg-amber-200 border-amber-300 dark:bg-blue-950 border dark:border-blue-800 font-semibold transition-all duration-200 hover:bg-amber-300 hover:dark:bg-blue-900 cursor-pointer";
 
   async function handleFiles(fileName) {
-    const link = await onClick(fileName);
-    window.open(link);
+    if (type === "download") {
+      const link = await onClick(fileName);
+      window.open(link);
+      toast.success("Pomyslnie pobrano");
+    }
+    if (type === "delete") {
+      onClick(fileName);
+      toast.success("Pomyslnie usunieto");
+    }
   }
 
-  if (type === "download")
+  if (type === "download" || type === "delete")
     return (
       <button
         onClick={() => handleFiles(fileName)}

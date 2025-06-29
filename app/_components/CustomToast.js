@@ -13,7 +13,7 @@ function CustomToast() {
               t.visible ? "animate-enter" : "animate-leave"
             }`}
           >
-            {t.message !== "Pomyslnie dodano" ? (
+            {t.message === "Wybierz dzień" ? (
               <HiMiniShieldExclamation className="text-red-500" size={32} />
             ) : (
               <HiOutlineCheckCircle className="text-green-600" size={32} />

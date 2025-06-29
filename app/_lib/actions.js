@@ -116,6 +116,8 @@ export async function deleteCalendarEvent(eventId) {
 }
 
 export async function downloadBucketItem(fileName) {
+  if (!fileName) return;
+
   const { data, error } = await supabase.storage
     .from("files")
     .createSignedUrl(fileName, 3600, { download: fileName });
@@ -126,13 +128,37 @@ export async function downloadBucketItem(fileName) {
 }
 
 export async function uploadBucketItem(formData) {
-  if (formData.get("file").name === "undefined") return;
+  if (!formData.get("file").name) return;
+
+  console.log(formData.get("file"));
 
   const fileName = formData.get("file").name;
 
-  const { error } = await supabase.storage
+  const { uploadFileError } = await supabase.storage
     .from("files")
     .upload(fileName, formData.get("file"));
+
+  if (uploadFileError) console.error(uploadFileError);
+
+  const uploadData = {
+    fileName,
+    createdBy: formData.get("userId"),
+  };
+
+  const { insertDataError } = await supabase
+    .from("files")
+    .insert([uploadData])
+    .select();
+
+  if (insertDataError) console.error(insertDataError);
+
+  revalidatePath("/application/files");
+}
+
+export async function deleteBucketItem(fileName) {
+  if (!fileName) return;
+
+  const { error } = await supabase.storage.from("files").remove([fileName]);
 
   if (error) console.error(error);
 

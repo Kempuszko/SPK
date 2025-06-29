@@ -19,16 +19,18 @@ async function page() {
   ]);
 
   return (
-    <div className="flex flex-col 2xs:gap-2 md:gap-6 xl:gap-10 2xl:gap-12 2xs:p-1 md:p-3 xl:py-4 xl:px-8 2xs:w-screen xl:w-fit">
+    <div className="flex flex-col 2xs:gap-2 md:gap-6 xl:gap-10 2xl:gap-12 2xs:p-1 md:p-3 xl:py-4 xl:px-8 2xs:w-screen xl:w-full">
       <h1 className="font-semibold tracking-wide 2xs:text-center xl:text-start 2xs:text-xl md:text-2xl 2xl:text-3xl">
         Witaj {session.user.name}
       </h1>
-      <div>
-        <h2 className="2xs:text-base md:text-xl 2xl:text-2xl 2xs:text-center xl:text-start 2xs:mb-2 xl:mb-6 font-medium">
-          Ostatni post
-        </h2>
-        <Post data={latestPost.at(0)} dashboard={true} />
-      </div>
+      {latestPost.length > 0 && (
+        <div>
+          <h2 className="2xs:text-base md:text-xl 2xl:text-2xl 2xs:text-center xl:text-start 2xs:mb-2 xl:mb-6 font-medium">
+            Ostatni post
+          </h2>
+          <Post data={latestPost.at(0)} dashboard={true} />
+        </div>
+      )}
       <div>
         <h2 className="2xs:text-base md:text-xl 2xl:text-2xl 2xs:text-center xl:text-start 2xs:mb-2 2xl:mb-6 font-medium">
           Nadchodzace wydarzenia

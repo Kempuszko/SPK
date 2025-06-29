@@ -69,6 +69,12 @@ export async function createUser(newUser) {
   return data;
 }
 
+export async function getFilesInfo() {
+  const { data } = await supabase.from("files").select("*");
+
+  return data;
+}
+
 export async function getBucketItems() {
   const { data, error } = await supabase.storage.from("files").list();
 

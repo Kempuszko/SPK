@@ -13,7 +13,7 @@ async function Post({ data, dashboard = false }) {
   ]);
 
   return (
-    <li className="bg-amber-200 dark:bg-blue-950 flex flex-col px-2 py-2 rounded-2xl border border-amber-300 dark:border-blue-800 transition-all duration-200">
+    <li className="bg-amber-200 dark:bg-blue-950 flex flex-col px-2 py-2 rounded-2xl border border-amber-300 dark:border-blue-800 transition-all duration-200 ">
       <h1 className="md:text-xl 2xl:text-2xl font-semibold md:px-2 2xl:px-4">
         {postTitle}
       </h1>
