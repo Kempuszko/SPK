@@ -1,5 +1,5 @@
 function Select({ type, name = "", defaultValue = "" }) {
-  const commonStyles = `bg-amber-200 border-amber-300 dark:bg-blue-950 p-1 border dark:border-blue-800 rounded-full w-22 transition-all focus:ring-4 dark:ring-blue-800 ring-amber-300  outline-none focus:outline-none `;
+  const commonStyles = `bg-amber-200 border-amber-300 dark:bg-blue-950 p-1 border dark:border-blue-800 rounded-full w-22 transition-[background-color,_box-shadow,_border] focus:ring-4 dark:ring-blue-800 ring-amber-300  outline-none focus:outline-none `;
 
   if (type === "minutes")
     return (

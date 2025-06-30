@@ -43,7 +43,7 @@ function CalendarComponent({ eventDays, session }) {
                     ).length > 0
                       ? "dark:bg-red-900 bg-red-400"
                       : ""
-                  } transition-all cursor-pointer bg-amber-200 dark:bg-blue-950 hover: w-10 h-10 m-1 rounded-full `}
+                  } transition-[background-color,_box-shadow] cursor-pointer bg-amber-200 dark:bg-blue-950 hover: w-10 h-10 m-1 rounded-full `}
                   onClick={(e) => {
                     selected?.toString() === day.date.toString()
                       ? setIsShowing(true)
