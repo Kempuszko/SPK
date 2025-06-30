@@ -19,7 +19,7 @@ async function page() {
   ]);
 
   return (
-    <div className="flex flex-col 2xs:gap-2 md:gap-6 xl:gap-10 2xl:gap-12 2xs:p-1 md:p-3 xl:py-4 xl:px-8 2xs:w-screen xl:w-full py-4 xl:py-8 2xl:py-12">
+    <div className="flex flex-col 2xs:gap-2 md:gap-6 xl:gap-10 2xl:gap-12 2xs:p-1 md:p-3 xl:px-8 2xs:w-screen xl:w-full py-4 xl:py-8 2xl:py-12">
       <h1 className="font-semibold tracking-wide 2xs:text-center xl:text-start 2xs:text-xl md:text-2xl 2xl:text-3xl">
         Witaj {session.user.name}
       </h1>
