@@ -36,7 +36,7 @@ const Modal = ({
           <div className="dark:bg-blue-950 bg-gray-100 h-full w-full p-4 shadow-2xl">
             <div className="flex justify-end text-2xl">
               <button
-                className="cursor-pointer"
+                className="cursor-pointer transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-300"
                 id="x"
                 onClick={handleCloseClick}
               >
@@ -65,7 +65,10 @@ const Modal = ({
         <div className="w-xl h-[20rem]">
           <div className="dark:bg-blue-950 bg-gray-100 h-full w-full p-4 shadow-2xl">
             <div className="flex justify-end text-2xl">
-              <button className="cursor-pointer" onClick={handleCloseClick}>
+              <button
+                className="cursor-pointer transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-300"
+                onClick={handleCloseClick}
+              >
                 <HiXMark />
               </button>
             </div>
@@ -86,7 +89,7 @@ const Modal = ({
           <div className="dark:bg-blue-950 bg-gray-100 h-full w-full p-4 shadow-2xl">
             <div className="flex justify-end text-2xl">
               <button
-                className="cursor-pointer"
+                className="cursor-pointer transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-300"
                 id="x"
                 onClick={handleCloseClick}
               >

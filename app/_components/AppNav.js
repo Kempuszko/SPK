@@ -33,7 +33,7 @@ function AppNav() {
       >
         <div className="flex flex-col 2xs:gap-8">
           <button
-            className="xl:hidden absolute right-0 top-0 p-4"
+            className="xl:hidden absolute right-0 top-0 m-4 transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-400"
             onClick={handleNav}
           >
             <HiXMark className="w-8 h-8" />

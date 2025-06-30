@@ -29,7 +29,7 @@ function IncomingEventsList({ data, userId, tomorrow = false }) {
               <div className="flex items-center gap-4">
                 {userId === e.eventCreatedBy && (
                   <ModalButton
-                    className="cursor-pointer hover:text-gray-500 pl-2"
+                    className="cursor-pointer hover:text-gray-500 transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-400"
                     userId={userId}
                     text="Edytuj"
                     data={e}

@@ -20,11 +20,11 @@ async function Post({ data, dashboard = false }) {
       <span className="2xs:p-1 2xs:text-xs md:text-sm 2xl:text-base leading-5 md:py-2 md:px-4">
         {postDescription}
       </span>
-      <div className="flex justify-between md:px-1 md:py-1 2xl:px-2 2xl:py-2 items-center">
+      <div className="flex justify-between md:px-1 md:py-1 2xl:px-4 2xl:py-2 items-center">
         {session.user.userId === postCreatedBy && !dashboard ? (
           <div className="flex items-center 2xs:gap-4 md:gap-6 2xl:gap-8">
             <ModalButton
-              className="cursor-pointer hover:text-gray-500 pl-2 transition-[background-color,_box-shadow,_border]"
+              className="cursor-pointer hover:text-gray-500 transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-400"
               userId={session.user.userId}
               text="Edytuj"
               data={data}

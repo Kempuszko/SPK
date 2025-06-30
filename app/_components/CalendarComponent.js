@@ -4,7 +4,7 @@ import Form from "@/app/_components/Form";
 import Modal from "@/app/_components/Modal";
 import { add, format } from "date-fns";
 import { useState } from "react";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, getDefaultClassNames } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 function CalendarComponent({ eventDays, session }) {
@@ -27,7 +27,8 @@ function CalendarComponent({ eventDays, session }) {
           numberOfMonths={1}
           classNames={{
             today: "[&>*]:ring-4 [&>*]:dark:ring-blue-600 [&>*]:ring-amber-500",
-            selected: ` [&>*]:bg-amber-400  [&>*]:dark:bg-blue-800  [&>*]:text-xl  [&>*]: font-semibold`,
+            selected: `[&>*]:bg-amber-400  [&>*]:dark:bg-blue-800  [&>*]:text-xl  [&>*]:font-semibold `,
+            chevron: `${getDefaultClassNames.chevron} fill-amber-500 dark:fill-blue-800 focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none`,
           }}
           components={{
             DayButton: (props) => {
