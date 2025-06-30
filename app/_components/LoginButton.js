@@ -8,7 +8,7 @@ function LoginButton({ children }) {
     <form action={signInAction}>
       <button
         className={` ${responsive}
-      bg-amber-200 text-gray-800 rounded-4xl uppercase cursor-pointer hover:bg-amber-300 transition-all duration-200 shadow dark:bg-blue-900 dark:text-gray-100 dark:hover:bg-blue-700 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none`}
+      bg-amber-200 text-gray-800 rounded-4xl uppercase cursor-pointer hover:bg-amber-300 transition-all shadow dark:bg-blue-900 dark:text-gray-100 dark:hover:bg-blue-700 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none`}
       >
         {children}
       </button>

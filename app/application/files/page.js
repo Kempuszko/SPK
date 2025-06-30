@@ -35,7 +35,7 @@ async function page() {
         {itemsWithId.map((i) => (
           <li
             key={i.id}
-            className=" flex justify-between 2xs:px-1 2xs:mx-2 2xs:py-2 xl:px-4 xl:py-3 border-b-gray-200 border-b dark:border-b-gray-700 transition-all duration-200 2xs:last:border-none sm:[&:nth-last-child(-n+2)]:border-none 2xl:[&:nth-last-child(-n+3)]:border-none"
+            className=" flex justify-between 2xs:px-1 2xs:mx-2 2xs:py-2 xl:px-4 xl:py-3 border-b-gray-200 border-b dark:border-b-gray-700 transition-colors 2xs:last:border-none sm:[&:nth-last-child(-n+2)]:border-none 2xl:[&:nth-last-child(-n+3)]:border-none"
           >
             <span className="text-xs break-all">{i.name}</span>
             <div className="flex gap-2">

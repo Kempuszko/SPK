@@ -10,7 +10,7 @@ async function AppHeader() {
   const session = await auth();
 
   return (
-    <header className="border-b border-gray-200 2xs:p-2 md:py-3 md:px-6  2xl:py-4 2xl:px-8  dark:border-gray-800 transition-colors duration-200">
+    <header className="border-b border-gray-200 2xs:p-2 md:py-3 md:px-6  2xl:py-4 2xl:px-8  dark:border-gray-800 transition-colors">
       <div className="flex justify-between items-center ">
         <Logo />
         <div className="flex items-center justify-between gap-8">
@@ -24,7 +24,7 @@ async function AppHeader() {
           <DarkModeButton />
           <form action={signOutAction} className="flex items-center">
             <button>
-              <HiArrowRightOnRectangle className="2xs:h-6 2xs:w-6 xs:w-7 xs:h-7 md:h-8 md:w-8 xl:h-9 xl:w-9 cursor-pointer dark:text-gray-200 transition-colors duration-200 text-gray-800 " />
+              <HiArrowRightOnRectangle className="2xs:h-6 2xs:w-6 xs:w-7 xs:h-7 md:h-8 md:w-8 xl:h-9 xl:w-9 cursor-pointer dark:text-gray-200 text-gray-800 " />
             </button>
           </form>
           <OpenMenu />

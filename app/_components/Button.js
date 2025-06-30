@@ -11,11 +11,9 @@ function Button({
   pendingMessage = "",
 }) {
   const commonStyles =
-    "duration-200 focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none bg-amber-200 border-amber-300 dark:bg-blue-950 border dark:border-blue-800 font-semibold transition-all duration-200 hover:bg-amber-300 hover:dark:bg-blue-900 cursor-pointer disabled:cursor-not-allowed disabled:bg-blue-900";
+    "focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none bg-amber-200 border-amber-300 dark:bg-blue-950 border dark:border-blue-800 font-semibold transition-all hover:bg-amber-300 hover:dark:bg-blue-900 cursor-pointer disabled:cursor-not-allowed disabled:bg-blue-900";
 
   const { pending } = useFormStatus();
-
-  console.log(pending);
 
   async function handleFiles(fileName) {
     if (type === "download") {

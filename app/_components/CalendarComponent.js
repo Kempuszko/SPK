@@ -3,7 +3,6 @@
 import Form from "@/app/_components/Form";
 import Modal from "@/app/_components/Modal";
 import { add, format } from "date-fns";
-import { pl } from "date-fns/locale";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -19,7 +18,6 @@ function CalendarComponent({ eventDays, session }) {
     <>
       <div className="flex flex-col 2xl:justify-between 2xs:gap-2 md:gap-8 2xl:gap-16">
         <DayPicker
-          locale={pl}
           className="self-center"
           mode="single"
           onSelect={setSelected}
@@ -45,7 +43,7 @@ function CalendarComponent({ eventDays, session }) {
                     ).length > 0
                       ? "dark:bg-red-900 bg-red-400"
                       : ""
-                  } transition-[background-color, text-color] duration-200 cursor-pointer bg-amber-200 dark:bg-blue-950 hover: w-10 h-10 m-1 rounded-full `}
+                  } transition-all cursor-pointer bg-amber-200 dark:bg-blue-950 hover: w-10 h-10 m-1 rounded-full `}
                   onClick={(e) => {
                     selected?.toString() === day.date.toString()
                       ? setIsShowing(true)

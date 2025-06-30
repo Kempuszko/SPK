@@ -13,7 +13,7 @@ async function Post({ data, dashboard = false }) {
   ]);
 
   return (
-    <li className="bg-amber-200 dark:bg-blue-950 flex flex-col px-2 py-2 rounded-2xl border border-amber-300 dark:border-blue-800 transition-all duration-200 ">
+    <li className="bg-amber-200 dark:bg-blue-950 flex flex-col px-2 py-2 rounded-2xl border border-amber-300 dark:border-blue-800 transition-colors">
       <h1 className="md:text-xl 2xl:text-2xl font-semibold md:px-2 2xl:px-4">
         {postTitle}
       </h1>
@@ -24,7 +24,7 @@ async function Post({ data, dashboard = false }) {
         {session.user.userId === postCreatedBy && !dashboard ? (
           <div className="flex items-center 2xs:gap-4 md:gap-6 2xl:gap-8">
             <ModalButton
-              className="cursor-pointer hover:text-gray-500 pl-2 transition-all duration-200"
+              className="cursor-pointer hover:text-gray-500 pl-2 transition-all"
               userId={session.user.userId}
               text="Edytuj"
               data={data}
@@ -48,7 +48,7 @@ async function Post({ data, dashboard = false }) {
           </span>
           <img
             src={image}
-            className="rounded-full 2xs:w-6 md:w-8 2xl:w-12 ring-amber-300 dark:ring-blue-800 ring-4 transition-all duration-200"
+            className="rounded-full 2xs:w-6 md:w-8 2xl:w-12 ring-amber-300 dark:ring-blue-800 ring-4 transition-colors"
           />
         </div>
       </div>

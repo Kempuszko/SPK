@@ -19,21 +19,21 @@ function Slider() {
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center 2xs:px-4 pb-8">
-      <div className="bg-amber-200 2xs:p-2 2xl:py-4 2xl:px-8 rounded-4xl dark:bg-blue-950 transition-colors duration-200 relative">
+      <div className="bg-amber-200 2xs:p-2 2xl:py-4 2xl:px-8 rounded-4xl dark:bg-blue-950 transition-colors relative">
         <Image
           src={darkImages.at(active)}
           alt="test"
-          className="rounded-3xl hover:scale-[111%] transition-all duration-200 dark:brightness-95 "
+          className="rounded-3xl hover:scale-[111%] transition-all dark:brightness-95 "
           width="600"
         />
         <button
-          className="absolute right-full translate-y-full translate-x-full cursor-pointer text-gray-800 dark:text-gray-200 transition-all duration-200"
+          className="absolute right-full translate-y-full translate-x-full cursor-pointer text-gray-800 dark:text-gray-200 transition-all"
           onClick={() => setActive((n) => (n > 0 ? n - 1 : 3))}
         >
           <HiArrowLeft size={24} />
         </button>
         <button
-          className="absolute left-full translate-y-full -translate-x-full cursor-pointer text-gray-800 dark:text-gray-200 transition-all duration-200"
+          className="absolute left-full translate-y-full -translate-x-full cursor-pointer text-gray-800 dark:text-gray-200 transition-all"
           onClick={() => setActive((n) => (n < 3 ? n + 1 : 0))}
         >
           <HiArrowRight size={24} />
@@ -44,7 +44,7 @@ function Slider() {
           <button
             onClick={() => setActive(i)}
             key={i}
-            className={`opacity-70 h-4 w-4 rounded-full cursor-pointer transition-all duration-200 ${
+            className={`opacity-70 h-4 w-4 rounded-full cursor-pointer transition-all ${
               active === i
                 ? "dark:bg-blue-800 scale-125 bg-amber-300"
                 : "dark:bg-blue-900 bg-amber-200 "

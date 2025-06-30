@@ -7,12 +7,12 @@ function Input({
   required = false,
 }) {
   const commonStyles =
-    "2xl:w-1/2 mx-auto bg-amber-200 border-amber-300 dark:bg-blue-950 px-4 py-2 border dark:border-blue-800 rounded-2xl placeholder-gray-500 transition-[text-color, background-color] duration-200  focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none";
+    "2xl:w-1/2 mx-auto bg-amber-200 border-amber-300 dark:bg-blue-950 px-4 py-2 border dark:border-blue-800 rounded-2xl placeholder-gray-500 transition-all focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none focus:ring-4 dark:ring-blue-800 ring-amber-300 outline-none focus:outline-none";
 
   if (type === "file")
     return (
       <input
-        className="border hover:file:bg-amber-300 file:bg-amber-200 border-amber-300 dark:border-blue-800 rounded-2xl dark:file:bg-blue-950 file:p-2 dark:hover:file:bg-blue-800 transition-all file:transition-all file:duration-200 duration-200 cursor-pointer file:cursor-pointer"
+        className="border hover:file:bg-amber-300 file:bg-amber-200 border-amber-300 dark:border-blue-800 rounded-2xl dark:file:bg-blue-950 file:p-2 dark:hover:file:bg-blue-800 file:transition-all transition-all   cursor-pointer file:cursor-pointer"
         type={type}
         name={name}
         required

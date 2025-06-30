@@ -15,7 +15,7 @@ async function page() {
   return (
     <>
       <PostsComponent data={filteredPosts} userId={session.user.userId} />
-      <div id="modal-root" className="transition-all duration-300"></div>
+      <div id="modal-root"></div>
     </>
   );
 }

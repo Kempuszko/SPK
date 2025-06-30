@@ -11,8 +11,8 @@ function IncomingEventsList({ data, userId, tomorrow = false }) {
     );
 
   return (
-    <div className="2xs:h-24 md:h-36 2xl:h-48 border-amber-300 bg-amber-200 dark:bg-blue-950 border dark:border-blue-800 rounded-2xl transition-all duration-200">
-      <ul className="transition-all duration-200 p-3 max-w-11/12 mx-auto overflow-y-auto flex flex-col gap-3 h-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#828892] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#686C6F]">
+    <div className="2xs:h-24 md:h-36 2xl:h-48 border-amber-300 bg-amber-200 dark:bg-blue-950 border dark:border-blue-800 rounded-2xl transition-colors ">
+      <ul className="p-3 max-w-11/12 mx-auto overflow-y-auto flex flex-col gap-3 h-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#828892] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#686C6F]">
         {data === null || data.length === 0 ? (
           <h2 className="text-xl font-semibold text-center">
             {`Brak wydarzen na ${tomorrow ? "jutro" : "dzisiaj"}`}
@@ -29,7 +29,7 @@ function IncomingEventsList({ data, userId, tomorrow = false }) {
               <div className="flex items-center gap-4">
                 {userId === e.eventCreatedBy && (
                   <ModalButton
-                    className="cursor-pointer hover:text-gray-500 pl-2 transition-all duration-200"
+                    className="cursor-pointer hover:text-gray-500 pl-2"
                     userId={userId}
                     text="Edytuj"
                     data={e}

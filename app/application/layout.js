@@ -8,7 +8,7 @@ export const metadata = {
 
 function layout({ children }) {
   return (
-    <div className="flex flex-col transition-all duration-200 h-screen ">
+    <div className="flex flex-col h-screen ">
       <CustomToast />
       <AppHeader />
       <main className="2xs:flex 2xs:flex-col xl:grid xl:grid-cols-[17rem_auto] h-full xl:pt-4 2xl:pt-8">

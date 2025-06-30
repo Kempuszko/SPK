@@ -13,7 +13,7 @@ async function page() {
   return (
     <>
       <CalendarComponent eventDays={eventDays} session={session} />
-      <div id="modal-root" className="transition-all duration-200"></div>
+      <div id="modal-root"></div>
     </>
   );
 }
