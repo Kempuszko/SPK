@@ -3,6 +3,7 @@
 import Form from "@/app/_components/Form";
 import Modal from "@/app/_components/Modal";
 import { add, format } from "date-fns";
+import { pl } from "date-fns/locale";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -18,6 +19,7 @@ function CalendarComponent({ eventDays, session }) {
     <>
       <div className="flex flex-col 2xl:justify-between 2xs:gap-2 md:gap-8 2xl:gap-16">
         <DayPicker
+          locale={pl}
           className="self-center"
           mode="single"
           onSelect={setSelected}

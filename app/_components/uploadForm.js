@@ -16,7 +16,7 @@ function UploadForm({ onClick, userId }) {
       <label className="text-xl font-semibold">Dodaj plik</label>
       <input type="hidden" name="userId" value={userId} />
       <Input type="file" name="file" />
-      <Button>Dodaj</Button>
+      <Button pendingMessage="Dodawanie...">Dodaj</Button>
     </form>
   );
 }

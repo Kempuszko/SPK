@@ -138,7 +138,7 @@ export async function uploadBucketItem(formData) {
     .from("files")
     .upload(fileName, formData.get("file"));
 
-  if (uploadFileError) console.error(uploadFileError);
+  if (uploadFileError) return;
 
   const uploadData = {
     fileName,

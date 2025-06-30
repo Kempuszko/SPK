@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col xl:gap-12 2xl:gap-16 text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <div className="flex flex-col xl:gap-12 2xl:gap-16 text-gray-800 dark:text-gray-200 ">
       <Header />
       <main className="flex 2xs:flex-col xl:flex-row xl:justify-center 2xs:gap-2 xs:gap-4 xl:gap-16 2xl:gap-24">
         <div className="2xs:p-4 2xl:px-8 flex flex-col 2xs:gap-2 xs:gap-3 xl:gap-10 2xl:gap-16 items-center 2xl:max-w-[60rem] ">

@@ -34,7 +34,7 @@ function Form({ selected, type, action, userId, close, text, data }) {
         />
         <input type="hidden" value={userId} name="postCreatedBy" />
         {text && <input type="hidden" value={data.id} name="id" />}
-        <Button>{text || "Dodaj"}</Button>
+        <Button pendingMessage="Dodawanie...">{text || "Dodaj"}</Button>
       </form>
     );
 
@@ -73,8 +73,12 @@ function Form({ selected, type, action, userId, close, text, data }) {
           required={true}
         />
         <div className="flex justify-center gap-16">
-          <Button type="reset">Reset</Button>
-          <Button type="submit">Potwierdź</Button>
+          <Button type="reset" pendingMessage="Reset">
+            Reset
+          </Button>
+          <Button type="submit" pendingMessage="Dodawanie...">
+            Potwierdź
+          </Button>
         </div>
         {selected === null && (
           <p className="self-center font-semibold text-xl">
@@ -126,6 +130,7 @@ function Form({ selected, type, action, userId, close, text, data }) {
         />
         <div className="flex justify-center gap-16">
           <Button
+            pendingMessage="Usuń"
             onClick={(e) => {
               e.preventDefault();
               deleteCalendarEvent(data.id);
@@ -134,7 +139,9 @@ function Form({ selected, type, action, userId, close, text, data }) {
           >
             Usuń
           </Button>
-          <Button type="submit">Potwierdź</Button>
+          <Button type="submit" pendingMessage="Dodawanie...">
+            Potwierdź
+          </Button>
         </div>
       </form>
     );
