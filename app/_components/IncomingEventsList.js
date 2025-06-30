@@ -11,7 +11,7 @@ function IncomingEventsList({ data, userId, tomorrow = false }) {
     );
 
   return (
-    <div className="2xs:h-24 md:h-36 2xl:h-48 border-amber-300 bg-amber-200 dark:bg-blue-950 border dark:border-blue-800 rounded-2xl transition-colors ">
+    <div className="2xs:h-24 md:h-36 2xl:h-48 border-amber-300 bg-amber-200 dark:bg-blue-950 border dark:border-blue-800 rounded-2xl transition-[background-color,_border] ">
       <ul className="p-3 max-w-11/12 mx-auto overflow-y-auto flex flex-col gap-3 h-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#828892] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#686C6F]">
         {data === null || data.length === 0 ? (
           <h2 className="text-xl font-semibold text-center">

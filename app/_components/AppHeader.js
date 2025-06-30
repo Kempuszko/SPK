@@ -10,7 +10,7 @@ async function AppHeader() {
   const session = await auth();
 
   return (
-    <header className="border-b border-gray-200 2xs:p-2 md:py-3 md:px-6  2xl:py-4 2xl:px-8  dark:border-gray-800 transition-colors">
+    <header className="border-b border-gray-200 2xs:p-2 md:py-3 md:px-6  2xl:py-4 2xl:px-8  dark:border-gray-800 transition-[border]">
       <div className="flex justify-between items-center ">
         <Logo />
         <div className="flex items-center justify-between gap-8">

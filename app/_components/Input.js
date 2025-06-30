@@ -12,7 +12,7 @@ function Input({
   if (type === "file")
     return (
       <input
-        className="border hover:file:bg-amber-300 file:bg-amber-200 border-amber-300 dark:border-blue-800 rounded-2xl dark:file:bg-blue-950 file:p-2 dark:hover:file:bg-blue-800 file:transition-all transition-all   cursor-pointer file:cursor-pointer"
+        className="border hover:file:bg-amber-300 file:bg-amber-200 border-amber-300 dark:border-blue-800 rounded-2xl dark:file:bg-blue-950 file:p-2 dark:hover:file:bg-blue-800 file:transition-all transition-all cursor-pointer file:cursor-pointer"
         type={type}
         name={name}
         required
