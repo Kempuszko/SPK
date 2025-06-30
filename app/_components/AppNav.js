@@ -29,7 +29,7 @@ function AppNav() {
   return (
     <>
       <ul
-        className={`${mobileNav} xl:border-r border-gray-200 py-4 px-6 dark:border-gray-800 mobileNav`}
+        className={`${mobileNav} xl:border-r border-gray-200 py-4 px-6 dark:border-gray-800 mobileNav xl:py-8 2xl:py-12`}
       >
         <div className="flex flex-col 2xs:gap-8">
           <button

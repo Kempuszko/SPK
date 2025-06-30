@@ -11,7 +11,7 @@ function layout({ children }) {
     <div className="flex flex-col h-screen ">
       <CustomToast />
       <AppHeader />
-      <main className="2xs:flex 2xs:flex-col xl:grid xl:grid-cols-[17rem_auto] h-full xl:pt-4 2xl:pt-8">
+      <main className="2xs:flex 2xs:flex-col xl:grid xl:grid-cols-[17rem_auto] h-full">
         <AppNav />
         {children}
       </main>

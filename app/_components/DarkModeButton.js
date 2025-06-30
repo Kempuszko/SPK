@@ -21,7 +21,7 @@ function DarkModeButton() {
   return (
     <button
       onClick={handleToggle}
-      className="transition-[background-color,_box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-300"
+      className="transition-[box-shadow] rounded-md focus:ring-4 dark:ring-blue-800 outline-none focus:outline-none ring-amber-300"
     >
       {isDark ? (
         <HiSun className={commonStyles} />

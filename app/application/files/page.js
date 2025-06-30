@@ -29,13 +29,13 @@ async function page() {
   });
 
   return (
-    <div className="flex flex-col xl:gap-16 xl:px-12 xl:py-4">
+    <div className="flex flex-col xl:gap-16 xl:px-12 py-4 xl:py-8 2xl:py-12 ">
       <UploadForm onClick={uploadBucketItem} userId={session.user.userId} />
       <ul className="grid sm:grid-cols-2 2xl:grid-cols-3 xl:gap-x-4 overflow-y-auto max-h-[60vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#828892] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#686C6F]">
         {itemsWithId.map((i) => (
           <li
             key={i.id}
-            className=" flex justify-between 2xs:px-1 2xs:mx-2 2xs:py-2 xl:px-4 xl:py-3 border-b-gray-200 border-b dark:border-b-gray-700 transition-colors 2xs:last:border-none sm:[&:nth-last-child(-n+2)]:border-none 2xl:[&:nth-last-child(-n+3)]:border-none"
+            className=" flex justify-between 2xs:px-1 2xs:mx-2 2xs:py-2 xl:px-4 xl:py-3 border-b-gray-200 border-b dark:border-b-gray-800 transition-[border] 2xs:last:border-none sm:[&:nth-last-child(-n+2)]:border-none 2xl:[&:nth-last-child(-n+3)]:border-none"
           >
             <span className="text-xs break-all">{i.name}</span>
             <div className="flex gap-2">

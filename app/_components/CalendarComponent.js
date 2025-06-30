@@ -16,7 +16,7 @@ function CalendarComponent({ eventDays, session }) {
 
   return (
     <>
-      <div className="flex flex-col 2xl:justify-between 2xs:gap-2 md:gap-8 2xl:gap-16">
+      <div className="flex flex-col 2xl:justify-between 2xs:gap-2 md:gap-8 2xl:gap-16 py-4 xl:py-8 2xl:py-12">
         <DayPicker
           className="self-center"
           mode="single"

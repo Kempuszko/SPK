@@ -3,7 +3,7 @@ import Post from "./Post";
 
 function PostsComponent({ data, userId }) {
   return (
-    <div className="flex flex-col 2xl:gap-8 xl:gap-6 2xs:gap-4 py-4 xl:px-12 2xl:px-16 2xs:items-center">
+    <div className="flex flex-col 2xl:gap-8 xl:gap-6 2xs:gap-4 py-4 xl:px-12 2xl:px-16 2xs:items-center py-4 xl:py-8 2xl:py-12">
       <ModalButton type="posts" userId={userId}>
         Dodaj
       </ModalButton>

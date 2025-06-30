@@ -7,7 +7,7 @@ import Input from "./Input";
 function UploadForm({ onClick, userId }) {
   return (
     <form
-      className="flex 2xs:flex-col xl:flex-row items-center 2xs:gap-3 md:gap-4 xl:gap-6 2xs:py-4"
+      className="flex 2xs:flex-col xl:flex-row items-center 2xs:gap-3 md:gap-4 xl:gap-6 "
       action={(formData) => {
         onClick(formData);
         toast.success("Pomyslnie dodano");
