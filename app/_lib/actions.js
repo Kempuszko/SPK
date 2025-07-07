@@ -67,7 +67,7 @@ export async function createCalendarEvent(formData) {
 
   const correctedData = {
     eventTime: `${formData.get("timeHours")}:${formData.get("timeMinutes")}`,
-    eventDescription: formData.get("eventDescription"),
+    eventDescription: formData.get("eventDescription").slice(0, 30),
     eventCreatedBy: session.user.userId,
     eventDate: formData.get("eventDate"),
   };
@@ -90,7 +90,7 @@ export async function editCalendarEvent(formData) {
 
   const editedEvent = {
     eventTime: `${formData.get("timeHours")}:${formData.get("timeMinutes")}`,
-    eventDescription: formData.get("eventDescription").slice(0, 1000),
+    eventDescription: formData.get("eventDescription").slice(0, 30),
   };
 
   if (session.user.userId !== Number(formData.get("eventCreatedBy"))) return;
@@ -130,9 +130,17 @@ export async function downloadBucketItem(fileName) {
 export async function uploadBucketItem(formData) {
   if (!formData.get("file").name) return;
 
-  console.log(formData.get("file"));
+  const symbols = ["ą", "ę", "ć", "ś", "ń", "ó", "ź", "ż"];
+  const replacement = ["a", "e", "c", "s", "n", "o", "z"];
+  const string = formData.get("file").name.slice().toLowerCase().split("");
 
-  const fileName = formData.get("file").name;
+  const fileName = string
+    .map((l) => {
+      const check = symbols.findIndex((s) => s === l);
+      if (check < 0) return l;
+      else return replacement.at(check);
+    })
+    .join("");
 
   const { uploadFileError } = await supabase.storage
     .from("files")

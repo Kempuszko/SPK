@@ -54,7 +54,7 @@ function Form({ selected, type, action, userId, close, text, data }) {
         <input
           type="hidden"
           name="eventDate"
-          value={selected ? selected : "01/01/1970"}
+          value={selected ? selected.toLocaleDateString() : "01/01/1970"}
         />
         <div className="flex justify-center gap-14 items-center">
           <div className="flex items-center gap-2">

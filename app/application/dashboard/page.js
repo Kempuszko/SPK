@@ -9,8 +9,10 @@ export const metadata = {
 };
 
 async function page() {
-  const today = new Date(new Date().setHours(0, 0, 0, 0)).toString();
-  const tomorrow = new Date(new Date().setHours(24, 0, 0, 0)).toString();
+  const today = new Date(new Date().setHours(0, 0, 0, 0)).toLocaleDateString();
+  const tomorrow = new Date(
+    new Date().setHours(24, 0, 0, 0)
+  ).toLocaleDateString();
 
   const [incomingEvents, latestPost, session] = await Promise.all([
     getTodayEvents(today, tomorrow),
