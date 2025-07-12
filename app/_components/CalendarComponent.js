@@ -2,7 +2,7 @@
 
 import Form from "@/app/_components/Form";
 import Modal from "@/app/_components/Modal";
-import { add, format } from "date-fns";
+import { add } from "date-fns";
 import { useState } from "react";
 import { DayPicker, getDefaultClassNames } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -10,8 +10,8 @@ import "react-day-picker/dist/style.css";
 function CalendarComponent({ eventDays, session }) {
   const [selected, setSelected] = useState(null);
   const [isShowing, setIsShowing] = useState(false);
-  const filteredEventDays = eventDays.filter(
-    (e) => format(e.eventDate, "dd/MM") === format(selected, "dd/MM")
+  const filteredEventDays = eventDays?.filter(
+    (e) => e.eventDate === selected?.toLocaleDateString()
   );
 
   return (
@@ -38,9 +38,7 @@ function CalendarComponent({ eventDays, session }) {
                   {...buttonProps}
                   className={`${
                     eventDays.filter(
-                      (e) =>
-                        format(e.eventDate, "dd/MM") ===
-                        format(day.date, "dd/MM")
+                      (e) => e.eventDate === day.date.toLocaleDateString()
                     ).length > 0
                       ? "dark:bg-red-900 bg-red-400"
                       : ""
@@ -59,10 +57,7 @@ function CalendarComponent({ eventDays, session }) {
           <Modal
             userId={session.user.userId}
             type="calendar"
-            title={`Wydarzenia w dniu: ${format(
-              selected,
-              "EEEE MMMM (dd/MM)"
-            )}`}
+            title={`Wydarzenia w dniu: ${selected.toLocaleDateString()}`}
             onClose={() => setIsShowing(false)}
             dayInfo={filteredEventDays.length > 0 ? filteredEventDays : null}
           />
