@@ -200,6 +200,8 @@ export async function signInAction() {
 }
 
 export async function signOutAction() {
+  const cookieStore = await cookies();
+  await cookieStore.delete("demo_session");
   await signOut({ redirectTo: "/" });
 }
 
