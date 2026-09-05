@@ -1,5 +1,5 @@
 import CalendarComponent from "@/app/_components/CalendarComponent";
-import { auth } from "@/app/_lib/auth";
+import { getSession } from "@/app/_lib/getSession";
 import { getCalendarEvents } from "@/app/_lib/data-service";
 
 export const metadata = {
@@ -8,7 +8,10 @@ export const metadata = {
 };
 
 async function page() {
-  const [eventDays, session] = await Promise.all([getCalendarEvents(), auth()]);
+  const [eventDays, session] = await Promise.all([
+    getCalendarEvents(),
+    getSession(),
+  ]);
 
   return (
     <>

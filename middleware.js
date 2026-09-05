@@ -1,5 +1,11 @@
+import { NextResponse, NextRequest } from "next/server";
 import { auth } from "@/app/_lib/auth";
-export const middleware = auth;
+
+export default async function middleware(req) {
+  const hasDemoCookie = req.cookies.has("demo_session");
+
+  return hasDemoCookie ? NextResponse.next() : auth(req);
+}
 
 export const config = {
   matcher: [

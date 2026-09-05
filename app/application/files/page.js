@@ -5,7 +5,7 @@ import {
   downloadBucketItem,
   uploadBucketItem,
 } from "@/app/_lib/actions";
-import { auth } from "@/app/_lib/auth";
+import { getSession } from "@/app/_lib/getSession";
 import { getBucketItems, getFilesInfo } from "@/app/_lib/data-service";
 
 import { HiArrowDownOnSquare, HiTrash } from "react-icons/hi2";
@@ -18,15 +18,23 @@ export const metadata = {
 async function page() {
   const [items, session, files] = await Promise.all([
     getBucketItems(),
-    auth(),
+    getSession(),
     getFilesInfo(),
   ]);
 
-  const itemsWithId = items.map((item, index) => {
-    const createdBy = files.at(index).createdBy;
+  console.log(files);
+  console.log(items);
 
-    return { ...item, createdBy };
-  });
+  const itemsWithId = items
+    .map((item) => {
+      const matchingFile = files.find((file) => file.fileName === item.name);
+
+      return {
+        ...item,
+        createdBy: matchingFile?.createdBy ?? null,
+      };
+    })
+    .filter((item) => item.name !== ".emptyFolderPlaceholder");
 
   return (
     <div className="flex flex-col xl:gap-16 xl:px-12 py-4 xl:py-8 2xl:py-12 ">

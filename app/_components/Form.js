@@ -1,56 +1,96 @@
+"use client";
+
+import { createCalendarEvent, deleteCalendarEvent } from "@/app/_lib/actions";
 import { HiOutlineClock } from "react-icons/hi2";
-import { createCalendarEvent, deleteCalendarEvent } from "../_lib/actions";
-import Button from "./Button";
 import Input from "./Input.js";
 import Select from "./Select";
-import toast from "react-hot-toast";
+import { FormActions } from "./FormActions";
 import { format } from "date-fns";
+import toast from "react-hot-toast";
 
 function Form({ selected, type, action, userId, close, text, data }) {
+  async function handlePostSubmit(formData) {
+    try {
+      await action(formData);
+      if (typeof close === "function") close();
+      toast.success(`Pomyślnie ${text === "Edytuj" ? "zedytowano" : "dodano"}`);
+    } catch (error) {
+      toast.error("Wystąpił błąd podczas zapisywania posta");
+    }
+  }
+
+  async function handleCalendarEditSubmit(formData) {
+    try {
+      await action(formData);
+      if (typeof close === "function") close();
+      toast.success("Pomyślnie zedytowano wydarzenie");
+    } catch (error) {
+      toast.error("Błąd podczas edycji wydarzenia");
+    }
+  }
+
+  async function handleCalendarSubmit(formData) {
+    if (formData.get("eventDate") === "01/01/1970") {
+      toast.error("Wybierz dzień");
+      return;
+    }
+
+    try {
+      await createCalendarEvent(formData);
+      if (typeof close === "function") close();
+      toast.success("Pomyślnie dodano wydarzenie");
+    } catch (error) {
+      toast.error("Nie udało się dodać wydarzenia");
+      console.error(error);
+    }
+  }
+
+  async function handleDeleteEvent(e) {
+    e.preventDefault();
+
+    try {
+      await deleteCalendarEvent(data.id);
+
+      if (typeof close === "function") close();
+      toast.success("Pomyślnie usunięto wydarzenie");
+    } catch (error) {
+      console.error("Błąd podczas usuwania:", error);
+      toast.error("Nie udało się usunąć wydarzenia");
+    }
+  }
+
   if (type === "post")
     return (
       <form
         className="flex flex-col items-center gap-8"
-        action={(formData) => {
-          action(formData);
-          close();
-          toast.success(
-            `Pomyslnie ${text === "Edytuj" ? "zedytowano" : "dodano"}`
-          );
-        }}
+        action={handlePostSubmit}
       >
         <Input
           type="text"
-          placeholder="Tytul"
+          placeholder="Tytuł"
           name="postTitle"
-          defaultValue={text && data.postTitle}
+          defaultValue={text && data?.postTitle}
           required={true}
         />
         <Input
           type="textarea"
-          placeholder="Tresc..."
+          placeholder="Treść..."
           name="postDescription"
-          defaultValue={text && data.postDescription}
+          defaultValue={text && data?.postDescription}
           required={true}
         />
         <input type="hidden" value={userId} name="postCreatedBy" />
         {text && <input type="hidden" value={data.id} name="id" />}
-        <Button pendingMessage="Dodawanie...">{text || "Dodaj"}</Button>
+
+        <FormActions text={text || "Dodaj"} />
       </form>
     );
 
   if (type === "calendar")
     return (
       <form
-        className=" 2xl:w-2xl h-1/2 2xl:mx-auto flex flex-col 2xl:gap-6 md:gap-4 2xs:gap-2"
-        action={(formData) => {
-          if (formData.get("eventDate") === "01/01/1970") {
-            toast.success("Wybierz dzień");
-            return;
-          }
-          createCalendarEvent(formData);
-          toast.success("Pomyslnie dodano");
-        }}
+        className="2xl:w-2xl h-1/2 2xl:mx-auto flex flex-col 2xl:gap-6 md:gap-4 2xs:gap-2"
+        action={handleCalendarSubmit}
       >
         <input
           type="hidden"
@@ -73,30 +113,22 @@ function Form({ selected, type, action, userId, close, text, data }) {
           name="eventDescription"
           required={true}
         />
-        <div className="flex justify-center gap-16">
-          <Button type="reset" pendingMessage="Reset">
-            Reset
-          </Button>
-          <Button type="submit" pendingMessage="Dodawanie...">
-            Potwierdź
-          </Button>
-        </div>
+
+        <FormActions type="calendar" />
+
         {selected === null && (
-          <p className="self-center font-semibold text-xl">
-            Pamietaj aby wybrac dzien!
+          <p className="self-center font-semibold text-xl text-red-500">
+            Pamiętaj aby wybrać dzień!
           </p>
         )}
       </form>
     );
+
   if (type === "calendarEdit")
     return (
       <form
         className="mx-auto flex flex-col gap-6"
-        action={(formData) => {
-          action(formData);
-          close();
-          toast.success("Pomyslnie zedytowano");
-        }}
+        action={handleCalendarEditSubmit}
       >
         <input type="hidden" name="id" value={data.id} />
         <input
@@ -129,21 +161,8 @@ function Form({ selected, type, action, userId, close, text, data }) {
           name="eventDescription"
           required={true}
         />
-        <div className="flex justify-center gap-16">
-          <Button
-            pendingMessage="Usuń"
-            onClick={(e) => {
-              e.preventDefault();
-              deleteCalendarEvent(data.id);
-              toast.success("Pomyslnie usunieto");
-            }}
-          >
-            Usuń
-          </Button>
-          <Button type="submit" pendingMessage="Dodawanie...">
-            Potwierdź
-          </Button>
-        </div>
+
+        <FormActions type="calendarEdit" onDelete={handleDeleteEvent} />
       </form>
     );
 }

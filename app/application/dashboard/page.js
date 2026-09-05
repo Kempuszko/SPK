@@ -1,6 +1,6 @@
 import IncomingEventsList from "@/app/_components/IncomingEventsList";
 import Post from "@/app/_components/Post";
-import { auth } from "@/app/_lib/auth";
+import { getSession } from "@/app/_lib/getSession";
 import { getLatestPost, getTodayEvents } from "@/app/_lib/data-service";
 import { format } from "date-fns";
 
@@ -16,7 +16,7 @@ async function page() {
   const [incomingEvents, latestPost, session] = await Promise.all([
     getTodayEvents(today, tomorrow),
     getLatestPost(),
-    auth(),
+    getSession(),
   ]);
 
   return (

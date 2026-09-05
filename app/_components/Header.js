@@ -1,5 +1,6 @@
 import DarkModeButton from "./DarkModeButton";
 import LoginButton from "./LoginButton";
+import DemoLoginButton from "./DemoLoginButton";
 import Logo from "./Logo";
 
 function Header() {
@@ -9,6 +10,7 @@ function Header() {
         <Logo />
         <div className="2xs:gap-2 sm:gap-3 md:gap-5 xl:gap-6 2xl:gap-8 flex items-center justify-between">
           <DarkModeButton />
+          <DemoLoginButton>DEMO</DemoLoginButton>
           <LoginButton>Zaloguj się</LoginButton>
         </div>
       </div>

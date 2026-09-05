@@ -11,7 +11,9 @@ const authConfig = {
   ],
   callbacks: {
     authorized({ auth, request }) {
-      return !!auth?.user;
+      const hasDemoCookie = request.cookies.has("demo_session");
+
+      return hasDemoCookie ? true : !!auth?.user;
     },
     async signIn({ user, account, profile }) {
       try {
@@ -32,10 +34,19 @@ const authConfig = {
         return false;
       }
     },
-    async session({ session, user }) {
-      const appUser = await getUserByEmail(session.user.email);
-      session.user.userId = appUser.id;
-      session.user.isAuthoried = appUser.authorized;
+    async session({ session }) {
+      if (!session?.user?.email) return session;
+
+      try {
+        const appUser = await getUserByEmail(session.user.email);
+        if (appUser) {
+          session.user.userId = appUser.id;
+          session.user.isAuthoried = appUser.authorized;
+        }
+      } catch (err) {
+        console.error("Blad podczas pobierania danych użytkownika:", err);
+      }
+
       return session;
     },
   },

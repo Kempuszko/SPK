@@ -1,5 +1,5 @@
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
-import { auth } from "../_lib/auth";
+import { getSession } from "../_lib/getSession";
 import DarkModeButton from "./DarkModeButton";
 import Logo from "./Logo";
 
@@ -7,7 +7,7 @@ import { signOutAction } from "../_lib/actions";
 import OpenMenu from "./OpenMenu";
 
 async function AppHeader() {
-  const session = await auth();
+  const session = await getSession();
 
   return (
     <header className="border-b border-gray-200 2xs:p-2 md:py-3 md:px-6  2xl:py-4 2xl:px-8  dark:border-gray-800 transition-[border]">

@@ -5,17 +5,12 @@ import dimg0 from "/public/przyklad1.png";
 import dimg1 from "/public/przyklad2.png";
 import dimg2 from "/public/przyklad3.png";
 import dimg3 from "/public/przyklad4.png";
-import img0 from "/public/przyklad1.png";
-import img1 from "/public/przyklad2.png";
-import img2 from "/public/przyklad3.png";
-import img3 from "/public/przyklad4.png";
 import { useState } from "react";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 
 function Slider() {
   const [active, setActive] = useState(0);
   const darkImages = [dimg0, dimg1, dimg2, dimg3];
-  // const images = [img0, img1, img2, img3];
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center 2xs:px-4 pb-8">

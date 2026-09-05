@@ -17,13 +17,20 @@ function Button({
 
   async function handleFiles(fileName) {
     if (type === "download") {
-      const link = await onClick(fileName);
-      window.open(link);
-      toast.success("Pomyslnie pobrano");
+      try {
+        const link = await onClick(fileName);
+        window.open(link);
+        toast.success("Pomyslnie pobrano");
+      } catch (err) {
+        toast.error("Wystapil blad podczas pobierania pliku");
+      }
     }
     if (type === "delete") {
-      onClick(fileName);
-      toast.success("Pomyslnie usunieto");
+      await toast.promise(onClick(fileName), {
+        loading: "Usuwanie...",
+        success: "Pomyślnie usunięto",
+        error: "Nie udało się usunąć",
+      });
     }
   }
 

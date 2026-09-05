@@ -1,11 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { auth, signIn, signOut } from "./auth";
+import { signIn, signOut } from "./auth";
+import { getSession } from "./getSession";
 import { supabase } from "./supabase";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function createPost(formData) {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !session.user.isAuthoried) return;
 
   const newPost = {
@@ -25,7 +28,7 @@ export async function createPost(formData) {
 }
 
 export async function deletePost(postData) {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !session.user.isAuthoried) return;
 
   const { id, postCreatedBy } = postData;
@@ -40,7 +43,7 @@ export async function deletePost(postData) {
 }
 
 export async function editPost(formData) {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !session.user.isAuthoried) return;
 
   const editedPost = {
@@ -62,30 +65,38 @@ export async function editPost(formData) {
 }
 
 export async function createCalendarEvent(formData) {
-  const session = await auth();
-  if (!session || !session.user.isAuthoried) return;
+  const session = await getSession();
+
+  if (!session || !session.user.isAuthoried) {
+    throw new Error("Brak uprawnień");
+  }
+
+  const eventDate = formData.get("eventDate");
+  if (!eventDate || eventDate === "01/01/1970") {
+    throw new Error("Wybierz dzień");
+  }
 
   const correctedData = {
     eventTime: `${formData.get("timeHours")}:${formData.get("timeMinutes")}`,
-    eventDescription: formData.get("eventDescription").slice(0, 30),
+    eventDescription: formData.get("eventDescription")?.slice(0, 30) || "",
     eventCreatedBy: session.user.userId,
-    eventDate: formData.get("eventDate"),
+    eventDate: eventDate,
   };
-
-  if (formData.get("eventDate") === "01/01/1970") return;
 
   const { error } = await supabase
     .from("calendarEvents")
     .insert([correctedData])
     .select();
 
-  if (error) console.error(error.message);
+  if (error) {
+    throw new Error(error.message);
+  }
 
   revalidatePath("/application/calendar");
 }
 
 export async function editCalendarEvent(formData) {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !session.user.isAuthoried) return;
 
   const editedEvent = {
@@ -190,4 +201,10 @@ export async function signInAction() {
 
 export async function signOutAction() {
   await signOut({ redirectTo: "/" });
+}
+
+export async function signInDemoAction() {
+  const cookieStore = await cookies();
+  cookieStore.set("demo_session", "true", { path: "/", maxAge: 3600 });
+  redirect("/application/dashboard");
 }

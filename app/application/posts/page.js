@@ -1,5 +1,5 @@
 import PostsComponent from "@/app/_components/PostsComponent";
-import { auth } from "@/app/_lib/auth";
+import { getSession } from "@/app/_lib/getSession";
 import { getPosts } from "@/app/_lib/data-service";
 
 export const metadata = {
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 async function page() {
-  const [posts, session] = await Promise.all([getPosts(), auth()]);
+  const [posts, session] = await Promise.all([getPosts(), getSession()]);
 
   const filteredPosts = posts.slice().sort((a, b) => b.id - a.id);
 

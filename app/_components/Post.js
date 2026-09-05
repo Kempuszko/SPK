@@ -1,6 +1,6 @@
 import { HiPencil, HiTrash } from "react-icons/hi2";
 import { getUserById } from "../_lib/data-service";
-import { auth } from "../_lib/auth";
+import { getSession } from "../_lib/getSession";
 import { deletePost } from "../_lib/actions";
 import EditDeleteButtons from "./EditDeleteButtons";
 import ModalButton from "./ModalButton";
@@ -9,7 +9,7 @@ async function Post({ data, dashboard = false }) {
   const { postTitle, postDescription, postCreatedBy } = data;
   const [{ fullName, image }, session] = await Promise.all([
     getUserById(postCreatedBy),
-    auth(),
+    getSession(),
   ]);
 
   return (
